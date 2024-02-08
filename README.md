@@ -5,9 +5,9 @@ This is my Term Project on Management Information System which is my major
 
 
 **Techonology
-  **Frontend: HTML5, CSS, JS
-  **Backend: JavaSpringboot
-  **Database: MySQL, MôngDB
+  **Frontend: HTML5, CSS, JS, VUEJS
+  **Backend: sailsjs
+  **Database: PostgreSQL, MôngDB
   **Authentication: JSON Web Tokens (JWT), OAuth2.0
   **Deployment
   **API Documentation
