@@ -35,5 +35,11 @@ module.exports.session = {
   // isSessionDisabled: function (req){
   //   return !!req.path.match(req._sails.LOOKS_LIKE_ASSET_RX);
   // },
-
+  name: 'sessionId',
+  cookie:{
+    // Neu chay trong product thi only transmit in HTTPS, false la chay tai local
+    secure: false,
+    httpOnly: true, //if true: prevent client side JS reading the cookies ()
+    maxAge: 1000 * 60 * 30 //session max age in miliseconds
+  },
 };

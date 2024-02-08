@@ -11,3 +11,6 @@ This is my Term Project on Management Information System which is my major
   **Authentication: JSON Web Tokens (JWT), OAuth2.0
   **Deployment
   **API Documentation
+
+
+All of the configuration of this repo is for local machine, feel free to change them
