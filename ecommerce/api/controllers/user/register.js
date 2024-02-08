@@ -45,11 +45,14 @@ module.exports = {
     try{
       const {name, email, password} = inputs;
       const newEmailAddress = email.toLowerCase();
-      let newUser = await Users.create({
+      let bUser = await Users.create({
         name: name,
         email: newEmailAddress,
         password: password
       }).fetch();
+      // Make sure default role: buyer is set in database
+      await Users.addToCollection(bUser.id, 'roles', 1);
+      let newUser = await Users.findOne({email: email}).populate('roles')
       return exits.success({
         message: `An account has been created for ${newUser.email} successfully. Check your email to verify`,
 
@@ -69,7 +72,7 @@ module.exports = {
       }
       return exits.error({
         message: 'Oops an error occured',
-        error: error.message
+        error: err.message
       });
     }
 

@@ -74,12 +74,12 @@ module.exports = {
       if (err.isOperational) {
         return exits.operationalError({
           message: `Error logging in user ${inputs.email}`,
-          error: error.raw,
+          error: err.raw,
         });
       }
       return exits.error({
         message: `Error logging in user ${inputs.email}`,
-        error: error.message,
+        error: err.message,
       });
     }
 
