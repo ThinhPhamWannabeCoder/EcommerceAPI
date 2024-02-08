@@ -54,8 +54,8 @@ module.exports = {
 
     }
   },
-  customToJson: function(){
-    return _.omit(this, ['password']);
+  customToJSON: function(){
+    return _.omit(this, ["password"]);
   },
   
   beforeCreate: async function(record, proceed){
