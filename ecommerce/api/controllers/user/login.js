@@ -69,9 +69,9 @@ module.exports = {
         data: user,
         token,
       })
-    } catch (error) {
+    } catch (err) {
       // sails.log.error(error);
-      if (error.isOperational) {
+      if (err.isOperational) {
         return exits.operationalError({
           message: `Error logging in user ${inputs.email}`,
           error: error.raw,

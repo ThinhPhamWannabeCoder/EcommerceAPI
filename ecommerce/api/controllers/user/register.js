@@ -56,13 +56,13 @@ module.exports = {
       })
     }
     catch(err){
-      if(error.code === 'E_UNIQUE'){
+      if(err.code === 'E_UNIQUE'){
         return exits.emailAlreadyInUsee({
           message: 'Oops an error occured',
           error: 'This email address already exits',
         })
       };
-      if(error.code === 'E_MISSING_OR_INVALID_PARAMS'){
+      if(err.code === 'E_MISSING_OR_INVALID_PARAMS'){
         return exits.error({
           error: 'Email or Password haven\'t meet standard',
         })

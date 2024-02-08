@@ -62,6 +62,13 @@ module.exports = {
     const hashPassword = await sails.helpers.passwords.hashPassword(record.password);
     record.password = hashPassword;
     return proceed()
+  },
+  beforeUpdate: async function(record, proceed){
+    if(record.password){
+      const hashPassword = await sails.helpers.passwords.hashPassword(record.password);
+      record.password = hashPassword;
+    }
+    return proceed()
   }
 
 };
