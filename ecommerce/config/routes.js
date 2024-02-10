@@ -9,9 +9,16 @@
  */
 
 module.exports.routes = {
-    "POST /user/login": "user/login",
-    "POST /user/register": "user/register",
+    "POST /user/login": {
+        action: "user/login",
+        csrf: false
+    },
+    "POST /user/register": { 
+        action: "user/register",
+        csrf: false,
+    },
     "GET /user/info": "user/get-info",
     "GET /user/logout": "user/logout",
-    "POST /user/changePassword": "user/change-password"
+    "POST /user/changePassword": "user/change-password",
+    'GET /csrfToken': 'security/grant-csrf-token' 
 };

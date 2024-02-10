@@ -16,7 +16,7 @@ module.exports.policies = {
   * (`true` allows public access)                                            *
   *                                                                          *
   ***************************************************************************/
-  '*': 'isLoggedIn',
+  '*': ['isLoggedIn'],
   'user/login': true, 
   'user/register': true,
 

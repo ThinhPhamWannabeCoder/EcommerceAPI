@@ -29,16 +29,17 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // order: [
-    //   'cookieParser',
-    //   'session',
-    //   'bodyParser',
-    //   'compress',
-    //   'poweredBy',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    // ],
+    order: [
+      'checkOrigin',
+      'cookieParser',
+      'session',
+      'bodyParser',
+      'compress',
+      'poweredBy',
+      'router',
+      'www',
+      'favicon',
+    ],
 
 
     /***************************************************************************
@@ -54,7 +55,20 @@ module.exports.http = {
     //   var middlewareFn = skipper({ strict: true });
     //   return middlewareFn;
     // })(),
+    checkOrigin: (function(req, res, next){
+        const allowedOrigins = ['http://example.com'];
+        const reqOrigin = req.headers.origin;
+        if(allowedOrigins.includes(reqOrigin)){
+          return next()
+        }
+        return res.status(403).json(
+          {
+            eror: 'Forbidden, Origin is not allowed'
+          }
+        )
 
+      }),
+    
   },
 
 };
