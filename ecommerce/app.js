@@ -1,4 +1,10 @@
 require('dotenv').config();
+// Set up the uncaught exception handler
+// process.on('uncaughtException', (err) => {
+//   console.error('Uncaught Exception:', err);
+//   // Handle the error as needed, for example, you can gracefully shutdown the server
+//   process.exit(1);
+// });
 /**
  * app.js
  *

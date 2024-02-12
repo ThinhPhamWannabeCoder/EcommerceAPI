@@ -49,9 +49,12 @@ module.exports = {
         name: name,
         email: newEmailAddress,
         password: password
-      }).fetch();
+      })
+      .fetch();
       // Make sure default role: buyer is set in database
+      sails.log(`Created user ${bUser.email}`)
       await Users.addToCollection(bUser.id, 'roles', 1);
+
       let newUser = await Users.findOne({email: email}).populate('roles')
       return exits.success({
         message: `An account has been created for ${newUser.email} successfully. Check your email to verify`,
@@ -70,6 +73,8 @@ module.exports = {
           error: 'Email or Password haven\'t meet standard',
         })
       }
+      sails.log.error(`Created user ${bUser.email}`)
+
       return exits.error({
         message: 'Oops an error occured',
         error: err.message

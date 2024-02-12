@@ -48,9 +48,9 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    adapter: process.env.ADAPTER,
-    url: process.env.URL,
-
+    adapter: 'sails-postgresql',
+    url: 'postgresql://postgres:123456@localhost:5432/postgres',
+    charset: 'utf8mb4'
   },
 
 

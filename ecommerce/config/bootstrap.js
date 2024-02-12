@@ -9,6 +9,8 @@
  * https://sailsjs.com/config/bootstrap
  */
 
+
+
 module.exports.bootstrap = async function() {
 
   // By convention, this is a good place to set up fake data during development.
@@ -26,5 +28,54 @@ module.exports.bootstrap = async function() {
   //   // etc.
   // ]);
   // ```
+  
+  // ------------- USERS MODULE ---------------
+  await Roles.create({
+    name: 'buyer',
+    desc: 'Default role for client'
+
+  })
+  bUser = await Users.create({
+    name: 'Pham Tien Thinh',
+    email: 'thinhbinhthuog7@gmail.com',
+    password: '12345678',
+
+    roles: 1
+  }).fetch()
+  // await Users.addToCollection(bUser.id, 'roles', 1);
+
+  // ------------- PRODUCTS MODULE ---------------
+  // Product
+  bProductCategory =  await ProductCategory.create({
+    name: 'Fashion' 
+  }).fetch()
+  // sails.log.info(bProductCategory)
+    // SubProduct
+  await SubProductCategory.create({
+    name: 'Jacket',
+
+    productCategory: bProductCategory.id
+  })
+  await SubProductCategory.create({
+    name: 'Hoodie',
+
+    productCategory: bProductCategory.id
+  })
+  await SubProductCategory.create({
+    name: 'T-Shirt',
+
+    productCategory: bProductCategory.id
+  })
+  // Product
+  await Product.create({
+    name: 'Uniqlo Bomber Jacket',
+    desc: 'Male Uniqlo Bomber for male in Vietname',
+    total_inventory: 100,
+    subCategory: 1
+  })
+  // const testResult = await  Product.findOne({
+  //   id: 1
+  // }).populate('subCategory')
+  // sails.log(testResult)
 
 };
