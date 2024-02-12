@@ -39,6 +39,21 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
   },
+  // beforeCreate: async function (values, proceed) {
+  //   try {
+  //     // Check if the referenced userId exists in the User model
+  //     const userExists = await User.findOne({ id: values.userId });
+
+  //     if (!userExists) {
+  //       return proceed({ error: 'User not found' }); // Abort the create operation
+  //     }
+
+  //     // Continue with the create operation if the user exists
+  //     return proceed();
+  //   } catch (error) {
+  //     console.error(error);
+  //     return proceed(error); // Handle other errors
+  //   }
   
 
 };

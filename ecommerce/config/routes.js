@@ -28,5 +28,6 @@ module.exports.routes = {
     },
     // Store
     "POST /product/create": "product/create",
-    "DELETE /product/:productid" : "product/delete"
+    "DELETE /product/:productId" : "product/delete",
+    "PUT /product/:productId/update":"product/update" 
 };

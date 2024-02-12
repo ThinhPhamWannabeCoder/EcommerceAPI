@@ -30,7 +30,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
-      const productId = this.req.params.productid;
+      const productId = this.req.params.productId;
       const product = await Product.findOne( {id: productId});
       if(!product){
         sails.log.warn('DELETE 404: product already deleted')
