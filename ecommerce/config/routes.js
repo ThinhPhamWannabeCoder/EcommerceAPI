@@ -20,5 +20,13 @@ module.exports.routes = {
     "GET /user/info": "user/get-info",
     "GET /user/logout": "user/logout",
     "POST /user/changePassword": "user/change-password",
-    'GET /csrfToken': 'security/grant-csrf-token' 
+    // 'GET /csrfToken': 'security/grant-csrf-token' 
+
+    // 
+    "GET /product": {
+        action: "product/get-all"
+    },
+    // Store
+    "POST /product/create": "product/create",
+    "DELETE /product/:productid" : "product/delete"
 };

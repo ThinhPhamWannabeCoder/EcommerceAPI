@@ -63,7 +63,7 @@ module.exports = {
 
       
       this.req.session.email = email;
-
+      sails.log.info(`POST: 200 - user: ${email} logged in`)
       return exits.success({
         message: `${email} has been logged in`,
         data: user,

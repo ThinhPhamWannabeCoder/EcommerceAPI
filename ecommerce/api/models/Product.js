@@ -24,6 +24,7 @@ module.exports = {
       type: 'number',
     },
     subCategory:{
+      columnName: 'subcategory_id',
       model: 'subProductCategory',
     }
 
