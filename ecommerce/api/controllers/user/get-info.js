@@ -31,17 +31,12 @@ module.exports = {
       // console.log(typeof userId)
       const user = await Users.findOne({ email: email});
       if(!user){
-        return exits.userNotFound({
-          error: 'User not found'
-        })
+        throw new CustomError(400, 'User not found')
       }
-      return exits.success({
-        user
-      })
+      return this.res.customSuccess(200, user)
     } catch (err) {
-      return exits.error({
-        message: 'something went wrong'
-      });
+      return this.res.customError(err)
+
     }
   }
 

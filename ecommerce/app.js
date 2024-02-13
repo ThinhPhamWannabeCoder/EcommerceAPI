@@ -40,6 +40,8 @@ var sails;
 var rc;
 try {
   sails = require('sails');
+ 
+  
   rc = require('sails/accessible/rc');
   
 } catch (err) {

@@ -39,6 +39,22 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
   },
+  beforeCreate: async function(values, proceed){
+    if(await ProductCategory.findOne({
+      id: values.subCategory
+    })){
+      return proceed()
+    }
+    return proceed(new Error("There's no subcateogry id"))
+  },
+  beforeUpdate: async function(values, proceed){
+    
+    if(!await ProductCategory.findOne({id: values.subCategory}) ){
+      return proceed(new Error("There's no subcateogry id"))
+    }
+    return proceed()
+    
+  }
   // beforeCreate: async function (values, proceed) {
   //   try {
   //     // Check if the referenced userId exists in the User model

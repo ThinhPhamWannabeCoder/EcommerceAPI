@@ -28,7 +28,20 @@ module.exports.bootstrap = async function() {
   //   // etc.
   // ]);
   // ```
-  
+  // process.on('uncaughtException', (err) => {
+  //   console.error('Uncaught Exception:', err);
+  //   // Perform cleanup or other necessary actions
+  //   process.exit(1); // Exit the process with a non-zero exit code
+  // });
+  global.CustomError  = class CustomError extends Error {
+    constructor(httpStatus, message) {
+      super(message);
+      this.statusCode = httpStatus
+      // this.name = 'CustomError';
+      // this.date = new Date();
+    }
+  }
+
   // ------------- USERS MODULE ---------------
   await Roles.create({
     name: 'buyer',

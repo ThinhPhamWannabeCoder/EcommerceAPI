@@ -30,16 +30,13 @@ module.exports = {
       const newPassword = inputs.password
       await Users.update({email: email}).set({password: newPassword})
       this.req.session.destroy();
-      return exits.success({
+      return this.res.customSuccess(200, {
         message: "Password has been successfully changed, please login agin"
       })
-
     }
     catch(err){ 
-      return exits.error({
-        message: 'Oops an error occured',
-        error: error.message
-      });
+      return this.res.customError(err)
+
     }
 
 

@@ -29,5 +29,6 @@ module.exports.routes = {
     // Store
     "POST /product/create": "product/create",
     "DELETE /product/:productId" : "product/delete",
-    "PUT /product/:productId/update":"product/update" 
+    "PUT /product/:productId/update":"product/update",
+    "GET /test/error": "test/err"
 };

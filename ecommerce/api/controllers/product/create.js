@@ -54,33 +54,16 @@ module.exports = {
         desc: desc,
         total_inventory: total_inventory,
         subCategory: subcategory_id
-      }).fetch();
-
-      // All done.
-      sails.log.info(`POST 201: create new product ${newProduct.id}: ${newProduct.name}`)
-
-      return exits.created({
-        message: `product ${newProduct.id} has been created`
-      });
-    } catch (err) {
-      if(err.code === 'AdapterError' ){
-        sails.log.error('POST: 500 - createProduct - Something went wrong with database adpater in Postgres')
-        return exits.internalError({
-          error: 'Internal error'
-        })
-      }
-      if(err.code === 'UsageError' ){
-        sails.log.error('POST: 500 - UsageError at created product action')
-        return exits.internalError({
-          error: 'Internal error'
-        })
-      }
-      sails.log.error('POST 500 - Some thing went wrong with product/create')
-
-      return exits.internalError({
-        error: 'Internal error'
+      }).intercept((err)=>{
+        return new CustomError(400, err.message)
+      })
+      .fetch();
   
-       })
+      return this.res.customSuccess(201, {
+        message: `product ${newProduct.id} has been created`
+      })
+    } catch (err) {
+      return this.res.customError(err)
 
     }
     

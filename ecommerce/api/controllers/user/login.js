@@ -21,24 +21,7 @@ module.exports = {
 
 
   exits: {
-    success:{
-      description: 'Login Successful',
-    },
-    notAUser:{
-      statusCode: 404,
-      description: 'User not found',
-    },
-    passwordMismatch:{
-      statusCode: 401,
-      description: 'Password do not match',
-    },
-    operationError:{ 
-      statusCode: 400,
-      description: 'The request was formed properly'
-    },
-    error: {
-      description: 'Something went wrong',
-    }
+  
   },
 
 
@@ -49,38 +32,25 @@ module.exports = {
         email: email
       });
       if(!user){
-        return exits.notAUser({
-          error: "Account was not found"
-        })
+        throw new CustomError(404, 'Account was not found')
       }
       await sails.helpers.passwords.checkPassword(password, user.password)
           .intercept('incorrect', ()=>{
-            return exits.passwordMismatch({
-              error: 'Email or password is incorrect.'
-            })
+            return new CustomError(401, 'Email or password is incorrect.')
           });
-      const token =  await sails.helpers.generateNewJwtToken(email);
-
-      
+        // Tiep tuc handle, intercept tai day neu can, de co the phat hien phan nao co van di
+      const token =  await sails.helpers.generateNewJwtToken(email).intercept(()=>{
+        return new CustomError(401, 'JWT is not available')
+      });
       this.req.session.email = email;
-      sails.log.info(`POST: 200 - user: ${email} logged in`)
-      return exits.success({
+      // sails.log.info(`POST: user: ${email} logged in`)
+      return this.res.customSuccess(200,{
         message: `${email} has been logged in`,
         data: user,
         token,
       })
     } catch (err) {
-      // sails.log.error(error);
-      if (err.isOperational) {
-        return exits.operationalError({
-          message: `Error logging in user ${inputs.email}`,
-          error: err.raw,
-        });
-      }
-      return exits.error({
-        message: `Error logging in user ${inputs.email}`,
-        error: err.message,
-      });
+      return this.res.customError(err)
     }
 
   }
