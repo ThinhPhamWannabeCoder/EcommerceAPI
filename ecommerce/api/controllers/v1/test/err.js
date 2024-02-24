@@ -17,9 +17,11 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
-    console.log(x)
-    return
+  fn: async function (inputs, exits) {
+    
+    return exits.success({
+      message: "Hi there"
+    })
   }
 
 };

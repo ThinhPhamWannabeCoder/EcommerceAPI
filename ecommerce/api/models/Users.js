@@ -41,8 +41,6 @@ module.exports = {
     bio:{
       type: 'string',
       allowNull: true,
-
-
     },
     // avatar:{
     //   type: 'string',
@@ -51,9 +49,39 @@ module.exports = {
       collection: 'roles',
       via: 'users',
       // through: 'usersRoles'
-
-    }
+    },
+    emailProofToken:{
+      type: 'string',
+      description: 'This will be used in the account verification email',
+      columnName: 'email_proof_token',
+    },
+    emailProofTokenExpiresAt:{
+      type: 'number',
+      description:
+        'time in milliseconds representing when the emailProofToken will expire',
+      columnName: 'email_proof_token_expires_at',
+    },
+    emailStatus:{
+      type: 'string',
+      isIn: ['unconfirmed', 'confirmed'],
+      defaultsTo: 'unconfirmed',
+      columnName: 'email_status',
+    },
+    passwordResetToken: {
+      type: 'string',
+      description:
+        'A unique token used to verify the user\'s identity when recovering a password.',
+      columnName: 'password_reset_token',
+    },
+    passwordResetTokenExpiresAt: {
+      type: 'number',
+      description:
+        'A timestamp representing the moment when this user\'s `passwordResetToken` will expire (or 0 if the user currently has no such token).',
+      example: 1508944074211,
+      columnName: 'password_reset_token_expires_at',
+    },
   },
+  
   customToJSON: function(){
     return _.omit(this, ["password"]);
   },

@@ -7,7 +7,9 @@
   "dependencies": {
     "@sailshq/lodash": "^3.10.3",
     "dotenv": "^16.4.1",
+    "jest-mock-req-res": "^1.0.2",
     "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.10",
     "sails": "^1.5.9",
     "sails-hook-organics": "^2.2.2",
     "sails-hook-orm": "^4.0.0",
@@ -17,11 +19,12 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "eslint": "5.16.0",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
-    "test": "jest --watchAll --verbose",
+    "test": "NODE_ENV=test jest --watchAll --verbose",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
   },

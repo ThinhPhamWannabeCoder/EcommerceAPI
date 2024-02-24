@@ -9,6 +9,16 @@
             "database": "postgres",
             "username": "postgres",
             "password": "123456"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "driver": "PostgreSQL",
+            "name": "dev-sails-server",
+            "username": "postgres",
+            "password": "123456",
+            "database": "postgres"
         }
     ]
 }

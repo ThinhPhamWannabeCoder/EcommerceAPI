@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+
 module.exports = {
 
 
@@ -9,8 +10,8 @@ module.exports = {
 
 
   inputs: {
-    subject:{
-      type: 'string',
+    payload:{
+      type: 'ref',
       required: true
     }
   },
@@ -26,13 +27,11 @@ module.exports = {
 
 
   fn: async function (inputs) {
-    const payload = {
-      subject: inputs.subject,
-      iss: 'Thinh Ecommerce',
-    }
-    const secret = 'bacd60458c82c5ab076c5458426cff02f54e78b1c0cce45bf6fea16b0514aaf4';
-    const token = jwt.sign(payload, secret, {expiresIn: '1d'});
-    return token;
+    const issuer = 'Thinh Ecommerce';
+    inputs.payload.iss = issuer;
+    const secret = sails.config.jwtSecretKey;
+    const token = jwt.sign(inputs.payload, secret, {expiresIn: '30m'});
+    return token; e
   }
 
 

@@ -1,30 +1,3 @@
-/**
- * customSuccess.js
- *
- * A custom response.
- *
- * Example usage:
- * ```
- *     return res.customSuccess();
- *     // -or-
- *     return res.customSuccess(optionalData);
- * ```
- *
- * Or with actions2:
- * ```
- *     exits: {
- *       somethingHappened: {
- *         responseType: 'customSuccess'
- *       }
- *     }
- * ```
- *
- * ```
- *     throw 'somethingHappened';
- *     // -or-
- *     throw { somethingHappened: optionalData }
- * ```
- */
 
 module.exports = function customSuccess(statusCode, jsonMessage) {
 
@@ -42,6 +15,7 @@ module.exports = function customSuccess(statusCode, jsonMessage) {
   sails.log.info(successMessage)
 
   return res.status(statusCode).send(
+    // status: statusCode,
     jsonMessage
   )
 

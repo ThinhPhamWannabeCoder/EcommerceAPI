@@ -1,31 +1,4 @@
 
-/**
- * customError.js
- *
- * A custom response.
- *
- * Example usage:
- * ```
- *     return res.customError();
- *     // -or-
- *     return res.customError(optionalData);
- * ```
- *
- * Or with actions2:
- * ```
- *     exits: {
- *       somethingHappened: {
- *         responseType: 'customError'
- *       }
- *     }
- * ```
- *
- * ```
- *     throw 'somethingHappened';
- *     // -or-
- *     throw { somethingHappened: optionalData }
- * ```
- */
 
 module.exports = function customError(err) {
 
@@ -47,6 +20,7 @@ module.exports = function customError(err) {
     const errorMessage = `${httpVerb}: \t${defaultStatusCode} \t request to: ${endpoint} \n ${err.stack}`
     sails.log.error(errorMessage);
     return res.status(defaultStatusCode).json({
+      status: defaultStatusCode,
       error: defaultErrorMessage
     })
   }
@@ -57,6 +31,7 @@ module.exports = function customError(err) {
   sails.log.warn(errorMessage)
 
   return res.status(statusCode).json({
+    status: statusCode,
     error: message
   })
 

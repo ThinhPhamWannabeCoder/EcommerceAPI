@@ -30,8 +30,8 @@ module.exports = {
       const {email, password} = inputs;
       const user = await Users.findOne({
         email: email
-      });
-      if(!user){
+      }).populate('roles');
+      if(!user || user.emailStatus==='unconfirmed'){
         throw new CustomError(404, 'Account was not found')
       }
       await sails.helpers.passwords.checkPassword(password, user.password)
@@ -39,15 +39,22 @@ module.exports = {
             return new CustomError(401, 'Email or password is incorrect.')
           });
         // Tiep tuc handle, intercept tai day neu can, de co the phat hien phan nao co van di
-      const token =  await sails.helpers.generateNewJwtToken(email).intercept(()=>{
+      user.roles = user.roles.map(role => role.name)
+      const payload = {
+        userId: user.id,
+        email : user.email,
+        roleNames: user.roles
+      }
+      
+      const token =  await sails.helpers.generateNewJwtToken(payload).intercept(()=>{
         return new CustomError(401, 'JWT is not available')
       });
-      this.req.session.email = email;
-      // sails.log.info(`POST: user: ${email} logged in`)
+      // this.req.session.email = email;
+
+      this.res.set('Authentication',`Bearer ${token}`)
       return this.res.customSuccess(200,{
         message: `${email} has been logged in`,
-        data: user,
-        token,
+        test: sails.config.custom.hi
       })
     } catch (err) {
       return this.res.customError(err)

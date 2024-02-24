@@ -19,10 +19,10 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     try {
-      const email  = this.req.session.email;
-      this.req.session.destroy()
+      // const email  = this.req.session.email;
+      // this.req.session.destroy()
       return this.res.customSuccess(200, {
-        message: `${email} logout successfully`
+        message: `${this.req.user.email} logout successfully`
       })
     } catch (err) {
       return this.res.customError(err)
