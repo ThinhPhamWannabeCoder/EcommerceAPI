@@ -25,6 +25,8 @@ module.exports = {
     },
     birthdate:{
       type: 'ref',
+      // type: 'number',
+      // isDate: true, // This indicates that the input should be a valid date string
       columnType: 'date',
       // allowNull: true,
     },
@@ -42,9 +44,11 @@ module.exports = {
       type: 'string',
       allowNull: true,
     },
-    // avatar:{
-    //   type: 'string',
-    // },
+    avatarUrl:{
+      type: 'string',
+      description: "Avatar URL will be stored here for FE to fetch",
+      allowNull: true,
+    },
     roles:{
       collection: 'roles',
       via: 'users',

@@ -28,6 +28,7 @@ module.exports.security = {
   *                                                                          *
   ***************************************************************************/
   cors: {
+    // sails.config.custom.baseUrl
     // allRoutes: true,
     // allowOrigins: ['http://example.com'],
     // // cookies from request will be blocked - 

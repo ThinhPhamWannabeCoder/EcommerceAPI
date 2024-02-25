@@ -26,7 +26,7 @@ module.exports.routes = {
     
 
     // USERS
-    
+    "POST /api/v1/users": "v1/users/update-info", 
     "GET /api/v1/users": "v1/users/get-info",
 
     // 'GET /csrfToken': 'security/grant-csrf-token' 
@@ -39,5 +39,6 @@ module.exports.routes = {
     "POST /api/v1/products/create": "v1/products/create",
     "DELETE /api/v1/products/:productsId" : "v1/products/delete",
     "PUT /api/v1/products/:productsId/update":"v1/products/update",
-    "GET /api/v1/test/error": "v1/test/err"
+    "GET /api/v1/test/error": "v1/test/err",
+
 };

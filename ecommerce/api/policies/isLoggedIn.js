@@ -8,7 +8,8 @@ module.exports = async function (req, res, proceed){
             'error': 'Forbidden',
             'status': 403,
             'message': 'Please login',
-            'data': sails.config.hi
+            'data': sails.config.hi,
+            'data2': sails.config.HI
        })
     }
     const secret = sails.config.jwtSecretKey;

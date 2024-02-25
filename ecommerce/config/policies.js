@@ -23,9 +23,9 @@ module.exports.policies = {
   // 'isSeller'
   // 'isDelivery
 
-  // 'v1/auth/login': true, 
-  // 'v1/auth/register': true,
+  'v1/auth/login': true, 
+  'v1/auth/register': true,
   // 'v1/test/err': true,
-  // 'v1/auth/verify': true
+  'v1/auth/verify': true,
   '*': true
 };

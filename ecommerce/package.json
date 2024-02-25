@@ -7,14 +7,15 @@
   "dependencies": {
     "@sailshq/lodash": "^3.10.3",
     "dotenv": "^16.4.1",
-    "jest-mock-req-res": "^1.0.2",
+    "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.10",
     "sails": "^1.5.9",
     "sails-hook-organics": "^2.2.2",
     "sails-hook-orm": "^4.0.0",
     "sails-hook-sockets": "^3.0.0",
-    "sails-postgresql": "^5.0.1"
+    "sails-postgresql": "^5.0.1",
+    "skipper": "^0.9.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
