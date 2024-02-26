@@ -8,7 +8,7 @@ module.exports = {
 
 
   inputs: {
-
+    // Query string se o trong nauy
   },
 
 
@@ -18,17 +18,25 @@ module.exports = {
 
 
   fn: async function (inputs) {
-    // Policy da duoc ap dung chi admin moi co the su dung
-    // Query tren redis, lay du lieu trong String
-    // online = {id id id id id id }
-    
+      // const userId = /*req.user.id*/ 1; // Assuming you have user authentication
+      // const userStatusKey = `user:${userId}:status`;
+      // var result;
+      // // await sails.getDatastore('cache').leaseConnection(async (db)=>{
+      // //   await (util.promisify(db.setex).bind(db))(userStatusKey, 60, JSON.stringify('notthing'))
+      // // })
+      // await sails.getDatastore('cache').leaseConnection(async (db) =>{
+      //   var found = await (util.promisify(db.get).bind(db))(userStatusKey)
 
-    // Await users.findEach()
+      //   console.log('hihi')
+      //   if(found === null){
+      //     return this.res.status(500).json({
+      //       status: 404,
+      //       message: "can't find shit"
+      //     })
+      //   }
+      //   result = JSON.parse(found)
 
-    // result = user.map(user=>{id:user.id, name: user.name, emai: user.email, avatarUrl: user.avatarUrl})
-    // All done.
-    return;
-
+      // })
   }
 
 

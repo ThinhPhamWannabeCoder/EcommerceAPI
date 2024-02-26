@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "@sailshq/lodash": "^3.10.3",
+    "connect-redis": "^2.0.0",
     "dotenv": "^16.4.1",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
@@ -15,6 +16,7 @@
     "sails-hook-orm": "^4.0.0",
     "sails-hook-sockets": "^3.0.0",
     "sails-postgresql": "^5.0.1",
+    "sails-redis": "^1.0.0",
     "skipper": "^0.9.4"
   },
   "devDependencies": {

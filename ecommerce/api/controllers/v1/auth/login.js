@@ -31,7 +31,7 @@ module.exports = {
       const user = await Users.findOne({
         email: email
       }).populate('roles');
-      if(!user || user.emailStatus==='unconfirmed'){
+      if(!user /*|| user.emailStatus==='unconfirmed'*/){
         throw new CustomError(404, 'Account was not found')
       }
       await sails.helpers.passwords.checkPassword(password, user.password)
@@ -50,11 +50,18 @@ module.exports = {
         return new CustomError(401, 'JWT is not available')
       });
       // this.req.session.email = email;
-
+      // this.req.session.username =  'Thinh'
+      const key = `user:${user.id}:status`
+      const value = "online"
+      await sails.helpers.setCache(key, value)
+        .intercept((x)=>{
+          return new CustomError(500, 'Internal Server Error')
+        })
       this.res.set('Authentication',`Bearer ${token}`)
       return this.res.customSuccess(200,{
+        status: 200,
         message: `${email} has been logged in`,
-        test: sails.config.custom.hi
+        // test: this.req.session.username
       })
     } catch (err) {
       return this.res.customError(err)

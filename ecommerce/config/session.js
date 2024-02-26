@@ -35,6 +35,8 @@ module.exports.session = {
   // isSessionDisabled: function (req){
   //   return !!req.path.match(req._sails.LOOKS_LIKE_ASSET_RX);
   // },
+  adapter: 'connect-redis',
+  url: 'redis://localhost:6379/0',
   name: 'sessionId',
   cookie:{
     // Neu chay trong product thi only transmit in HTTPS, false la chay tai local

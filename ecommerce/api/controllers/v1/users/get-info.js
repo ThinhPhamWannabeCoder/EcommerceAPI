@@ -37,26 +37,37 @@ module.exports = {
       // this.req.user.id
       const id = 1
   
+      const user = await Users.findOne({
+        id:id
+      })
+      const key = `user:${user.id}`
 
-      const user = await Users.find({
-        id: id
-      });
-      if(!user){
-        throw new CustomError(400, 'User not found')
+      var value = await sails.helpers.getCache(key).intercept(()=>{
+        return new CustomError(500, 'Internal Server Error')
+      })
+      console.log(value)
+      if(!value){
+        value = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          birthdate: user.birthdate,
+          phone: user.phone,
+          gender: user.gender,
+          bio: user.bio,
+          avatarUrl: user.avatarUrl
+        }
+
+        await sails.helpers.setCache(key, JSON.stringify(value))
+          .intercept(()=>{
+            return new CustomError(400, 'Loi tai setCahce')
+          })
+        
       }
-      const result = {
-        id: user[0].id,
-        name: user[0].name,
-        email: user[0].email,
-        birthdate: user[0].birthdate,
-        phone: user[0].phone,
-        gender: user[0].gender,
-        bio: user[0].bio,
-        avatarUrl: user[0].avatarUrl
-      }
-      
-      return this.res.customSuccess(200, result)
+
+      return this.res.customSuccess(200, value)
     } catch (err) {
+      // console.log(err)
       return this.res.customError(err)
 
     }

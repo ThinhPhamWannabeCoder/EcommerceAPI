@@ -35,10 +35,13 @@ module.exports.routes = {
     "GET /api/v1/products": {
         action: "v1/products/get-all"
     },
-    // Store
     "POST /api/v1/products/create": "v1/products/create",
     "DELETE /api/v1/products/:productsId" : "v1/products/delete",
     "PUT /api/v1/products/:productsId/update":"v1/products/update",
+
+
+    // Test
     "GET /api/v1/test/error": "v1/test/err",
+    "GET /api/v1/test/error2": "v1/test/test-2",
 
 };

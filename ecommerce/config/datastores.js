@@ -52,6 +52,10 @@ module.exports.datastores = {
     url: 'postgresql://postgres:123456@localhost:5432/postgres',
     charset: 'utf8mb4'
   },
+  cache: {
+    adapter: 'sails-redis',
+    url: 'redis://localhost:6379/0',
+  },
 
 
 };
