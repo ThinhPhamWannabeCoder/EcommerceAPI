@@ -4,6 +4,8 @@
 
 Welcome to the Ecommerce API project! This repository is dedicated to my learning journey in Backend Development using [Sails.js](https://sailsjs.com/). It serves as the culmination of my term project for my Major in [Management Information System](https://daotao.neu.edu.vn/Resources/Docs/SubDomain/daotao/CTDT%20K63/27.%20Ngành%20Hệ%20thống%20thông%20tin%20quản%20lý_CTĐT%202021.pdf) at the [National Economics University](https://www.neu.edu.vn).
 
+*After writing more and more I found out this sails JS is kinda "bad" if i want to be more flexible and use more third party package (I can only use Sails ecosystem which is really poor in resources). So this repo will be stopped written after I add a decent `product module` and `user-admin module` and I will went on NEST JS and use TypeScript*
+
 ## Project Goals 🎯
 
 The primary objectives of this project are:
