@@ -26,6 +26,7 @@ module.exports = {
       }
       await Product.destroy( {id : productId})
       return this.res.customSuccess(200, {
+        status: 200,
         message: "Delete successfully"
       })
     } catch (err) {

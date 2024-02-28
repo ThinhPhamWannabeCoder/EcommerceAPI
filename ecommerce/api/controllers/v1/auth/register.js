@@ -40,7 +40,7 @@ module.exports = {
       const expireIn = sails.config.custom.emailProofTokenTTL + Date.now();
 
 
-      var bUser = await Users.create({
+      let bUser = await Users.create({
         name: name,
         email: newEmailAddress,
         password: password,

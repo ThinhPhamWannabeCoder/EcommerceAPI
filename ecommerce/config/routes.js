@@ -28,8 +28,13 @@ module.exports.routes = {
     // USERS
     "POST /api/v1/users": "v1/users/update-info", 
     "GET /api/v1/users": "v1/users/get-info",
+    "GET /api/v1/users/to-seller": "v1/users/upgrade-to-seller",
 
     // 'GET /csrfToken': 'security/grant-csrf-token' 
+
+    // STORE
+    "POSTn /api/v1/store": "v1/store/create-store",
+
 
     // PRRODUCTS
     "GET /api/v1/products": {

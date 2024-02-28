@@ -53,7 +53,7 @@ module.exports = {
       });
     }
     catch(err){
-      return this.res.customError(err)
+      return this.res.customError(err);
 
     }
     

@@ -43,12 +43,10 @@ module.exports = {
       const payload = {
         userId: user.id,
         email : user.email,
-        roleNames: user.roles
+        roles: user.roles
       }
       
-      const token =  await sails.helpers.generateNewJwtToken(payload).intercept(()=>{
-        return new CustomError(401, 'JWT is not available')
-      });
+      const token =  await sails.helpers.generateNewJwtToken(payload)
       // this.req.session.email = email;
       // this.req.session.username =  'Thinh'
       const key = `user:${user.id}:status`

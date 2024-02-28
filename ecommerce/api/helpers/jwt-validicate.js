@@ -28,7 +28,7 @@ module.exports = {
   fn: async function (inputs,exits) {
     const secret = sails.config.jwtSecretKey;
 
-    await jwt.verify(intpus.token, secret,{ issuer: 'your_issuer'})
+    await jwt.verify(inputs.token, secret,{ issuer: 'your_issuer'})
       .then(decode =>{
         return decode
       })

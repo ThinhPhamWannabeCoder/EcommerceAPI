@@ -40,18 +40,18 @@ module.exports = {
 fn: async function (inputs) {
   try {
     // this.req.user.id
-    const id = 1;
+    // const id = this.req.user.id;
     const req = this.req;
     const res = this.res;
-
+    const id = req.user.userId
     const { name, birthdate, phone, gender, bio } = req.body;
-
+    const path = sails.config.userAvatarDestination;
     let url;
     
     // File upload handling
     const uploadedFiles = await new Promise((resolve, reject) => {
       req.file('avatar').upload({
-        dirname: require('path').resolve(sails.config.appPath, 'assets/images/avatar'),
+        dirname: require('path').resolve(sails.config.appPath, path),
         maxBytes: 10000000
       }, (err, uploadedFile) => {
         if (err) {

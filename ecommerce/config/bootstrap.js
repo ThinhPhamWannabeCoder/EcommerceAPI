@@ -43,17 +43,26 @@ module.exports.bootstrap = async function() {
   }
 
   // ------------- USERS MODULE ---------------
-  await Roles.create({
-    name: 'buyer',
-    desc: 'Default role for client'
-
-  })
+  // await Roles.create({
+  //   name: 'buyer',
+  //   desc: 'Default role for client'
+  // })
+  await Roles.createEach([
+    {
+      name: 'buyer',
+      desc: 'Default role for client'
+    },
+    {
+      name: 'seller',
+      desc: 'User can upgrade to this role'
+    }
+  ])
   bUser = await Users.create({
     name: 'Pham Tien Thinh',
     email: 'thinhbinhthuog7@gmail.com',
     password: '12345678',
-
-    roles: 1
+    roles: 1,
+    emailStatus: 'confirmed'
   }).fetch()
   // await Users.addToCollection(bUser.id, 'roles', 1);
 

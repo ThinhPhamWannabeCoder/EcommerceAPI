@@ -31,7 +31,7 @@ module.exports = {
     inputs.payload.iss = issuer;
     const secret = sails.config.jwtSecretKey;
     const token = jwt.sign(inputs.payload, secret, {expiresIn: '30m'});
-    return token; e
+    return token; 
   }
 
 

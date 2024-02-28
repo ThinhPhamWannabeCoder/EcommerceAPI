@@ -16,7 +16,7 @@ module.exports.policies = {
   * (`true` allows public access)                                            *
   *                                                                          *
   ***************************************************************************/
-  // '*': ['isLoggedIn'],
+  '*': ['isLoggedIn'],
 
   // 'isAdmin'
   // 'isBuyer'
@@ -27,5 +27,6 @@ module.exports.policies = {
   'v1/auth/register': true,
   // 'v1/test/err': true,
   'v1/auth/verify': true,
-  '*': true
+  // '*': true
+  'v1/store/*': ['isLoggedIn','isSeller']
 };

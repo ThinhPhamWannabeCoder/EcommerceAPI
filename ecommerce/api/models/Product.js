@@ -20,7 +20,7 @@ module.exports = {
       columnType: 'TEXT'
 
     },
-    total_inventory:{
+    totalInventory:{
       type: 'number',
     },
     subCategory:{

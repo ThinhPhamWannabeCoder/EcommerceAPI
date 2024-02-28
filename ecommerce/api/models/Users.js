@@ -54,6 +54,15 @@ module.exports = {
       via: 'users',
       // through: 'usersRoles'
     },
+    userLocation:{
+      collection: 'userLocation',
+      via: 'user'
+    },
+    store:{
+      collection: 'store',
+      via: 'owner',
+    },
+    // Store
     emailProofToken:{
       type: 'string',
       description: 'This will be used in the account verification email',
