@@ -22,17 +22,17 @@ module.exports = {
     // const email = this.req.user.email
     // const roles = this.req.user.roles
     try {
-      const userId = 1;
-      const userEmail = 'thinh';
+      const userId = this.req.user.userId || 1;
+      const userEmail = this.req.user.email || 'thinh';
       const sellerId = 2;
-      const roles = ['buyer'];
+      const roles = this.req.user.roles || ['buyer'];
       // IsLoggedIn da kiem tra cho minh roi nen khong can phai kiem tra laj email status nua
       if(roles.includes('seller') || roles.includes('admin') || roles.includes('delivery') ){
-        throw new customError(400, 'User was already seller or not allowed')
+        throw new CustomError(400, 'User was already seller or not allowed')
       }
 
       await Users.addToCollection(userId, 'roles', sellerId).intercept(()=>{
-        return new customError(500, 'Interal Sever Error');
+        return new CustomError(500, 'Interal Sever Error');
       })
 
       const {iss, iat, exp, ...newPayload}=this.req.user;

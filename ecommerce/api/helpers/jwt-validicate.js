@@ -30,10 +30,10 @@ module.exports = {
 
     await jwt.verify(inputs.token, secret,{ issuer: 'your_issuer'})
       .then(decode =>{
-        return decode
+        return decode;
       })
       .catch(err =>{
-        return err
+        return err;
       })
     
   }

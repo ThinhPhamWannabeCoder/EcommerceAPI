@@ -13,7 +13,7 @@ module.exports = {
       required: true,
     },
     owner:{
-      columnName: 'user_id',
+      columnName: 'owner_id',
       model: 'users',
       unique: true,
     },
