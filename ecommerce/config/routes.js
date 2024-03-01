@@ -22,11 +22,11 @@ module.exports.routes = {
   'POST /api/v1/auth/forgot-password': 'v1/auth/forgot-password',
   // Verification
   'GET /api/v1/auth/verify': 'v1/auth/verify',
-  'POST /api/v1/auth/reset-password': 'v1/auth/reset-password',
+  'PATCH /api/v1/auth/reset-password': 'v1/auth/reset-password',
 
 
   // USERS
-  'POST /api/v1/users': 'v1/users/update-info',
+  'PUT /api/v1/users': 'v1/users/update-info',
   'GET /api/v1/users': 'v1/users/get-info',
   'GET /api/v1/users/to-seller': 'v1/users/upgrade-to-seller',
 
@@ -35,16 +35,16 @@ module.exports.routes = {
   // STORE
   'POST /api/v1/store': 'v1/store/create-store',
   'GET /api/v1/store/:id': 'v1/store/get-store-info',
-  'POST /api/v1/store/:id/update': 'v1/store/update-store',
-  'GET /api/v1/store/:id/delete': 'v1/store/delete-store',
+  'POST /api/v1/store/:id': 'v1/store/update-store',
+  'DELETE /api/v1/store/:id': 'v1/store/delete-store',
 
   // PRRODUCTS
-  'GET /api/v1/products': {
-    action: 'v1/products/get-all'
+  'GET /api/v1/store/:storeId/products': {
+    action: 'v1/store/products/get-all'
   },
-  'POST /api/v1/products/create': 'v1/products/create',
-  'DELETE /api/v1/products/:productsId' : 'v1/products/delete',
-  'PUT /api/v1/products/:productsId/update':'v1/products/update',
+  'POST /api/v1/store/products': 'v1/store/products/create',
+  'DELETE /api/v1/store/:storeId/products/:productId' : 'v1/store/products/delete',
+  'PUT /api/v1/store/:storeId/products/:productId':'v1/store/products/update',
 
 
   // Test

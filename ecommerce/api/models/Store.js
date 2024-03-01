@@ -36,6 +36,15 @@ module.exports = {
       description: "Avatar URL will be stored here for FE to fetch",
       allowNull: true,
     },
+    product:{
+      collection: 'product',
+      via: 'store'
+    }
+    // inventory:{
+    //   collection: 'product',
+    //   via: 'store',
+    //   through: 'inventory'
+    // }
   },
 
 };
