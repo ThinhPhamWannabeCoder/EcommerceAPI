@@ -72,6 +72,7 @@ module.exports = {
 
       
       return this.res.customSuccess(201,{
+        status: 201,
         message: `An account has been created for ${email} successfully. Check your email (gmail) to verify`,
       })
     }

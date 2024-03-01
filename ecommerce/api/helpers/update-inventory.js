@@ -1,7 +1,7 @@
 module.exports = {
 
 
-  friendlyName: 'Load file',
+  friendlyName: 'Update inventory',
 
 
   description: '',

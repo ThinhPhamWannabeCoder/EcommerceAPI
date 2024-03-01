@@ -1,29 +1,45 @@
+const fs = require('fs');
+
 module.exports = {
-  friendlyName: 'Upload file',
-  description: '',
+
+
+  friendlyName: 'Updatefile',
+
+
+  description: 'Updatefile something.',
+
+
   inputs: {
-    file: {
+    file:{
       type: 'ref',
       required: true
     },
-    destination: {
+    oldUrl:{
+      type: 'string',
+      required: true,
+    },
+    destination:{
       type: 'string',
       required: true,
     }
   },
+
+
   exits: {
+
     success: {
-      description: 'File uploaded successfully',
-      outputType: 'string' // Adjust the outputType as needed
+      description: 'All done.',
     },
-    error: {
-      description: 'An error occurred',
-      outputType: 'ref' // Adjust the outputType as needed
-    },
+
   },
+
+
   fn: async function (inputs, exits) {
     try {
-      const { file, destination } = inputs;
+      const {file, oldUrl, destination} = inputs;
+      // DELETE OLD FILE
+      fs.unlinkSync(oldUrl)
+      // UPLOAD
       file.upload(
         {
           dirname: require('path').resolve(sails.config.appPath, destination),
@@ -44,9 +60,12 @@ module.exports = {
           }
         }
       );
-    } catch (error) {
+    } catch (err) {
       sails.log.error('Unhandled error:', error);
       return exits.error(new CustomError(500, 'Internal Server Error'));
     }
   }
+
+
 };
+

@@ -13,7 +13,7 @@ module.exports = {
       required: true,
     },
     owner:{
-      columnName: 'user_id',
+      columnName: 'owner_id',
       model: 'users',
       unique: true,
     },
@@ -36,6 +36,15 @@ module.exports = {
       description: "Avatar URL will be stored here for FE to fetch",
       allowNull: true,
     },
+    product:{
+      collection: 'product',
+      via: 'store'
+    }
+    // inventory:{
+    //   collection: 'product',
+    //   via: 'store',
+    //   through: 'inventory'
+    // }
   },
 
 };

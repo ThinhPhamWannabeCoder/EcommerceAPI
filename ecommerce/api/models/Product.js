@@ -20,23 +20,28 @@ module.exports = {
       columnType: 'TEXT'
 
     },
-    totalInventory:{
+    inventory:{
       type: 'number',
+    },
+    store:{
+      columnName: 'store_id',
+      model: 'store'
     },
     subCategory:{
       columnName: 'subcategory_id',
       model: 'subProductCategory',
-    }
+    },
+    images:{
+      collection: 'productImages',
+      via: 'product',
+    },
+    // inventory:{
+    //   collection: 'store',
+    //   via: 'product',
+    //   through: 'inventory'
+    // }
 
 
-    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
-    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
-    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-
-
-    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
-    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
-    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
   },
   beforeCreate: async function(values, proceed){

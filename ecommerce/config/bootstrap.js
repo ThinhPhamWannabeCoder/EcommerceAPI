@@ -61,10 +61,32 @@ module.exports.bootstrap = async function() {
     name: 'Pham Tien Thinh',
     email: 'thinhbinhthuog7@gmail.com',
     password: '12345678',
-    roles: 1,
+    roles: [1,2],
     emailStatus: 'confirmed'
   }).fetch()
   // await Users.addToCollection(bUser.id, 'roles', 1);
+
+  // ------------- LOCATION ---------------
+  await City.create({
+    name: 'Hanoi'
+  })
+  await District.create({
+    name: 'Hoan Kiem',
+    city: 1,
+  })
+  await Ward.create({
+    name: 'Chuong Duong',
+    District: 1
+  })
+  // ------------- STORE MODDULE ---------------
+  await Store.create({
+    name: 'Apple store',
+    owner: 1,
+    ward: 1,
+    location: 'Bach Dang',
+    bio: '',
+    avatarUrl: '',
+  })
 
   // ------------- PRODUCTS MODULE ---------------
   // Product
@@ -92,12 +114,10 @@ module.exports.bootstrap = async function() {
   await Product.create({
     name: 'Uniqlo Bomber Jacket',
     desc: 'Male Uniqlo Bomber for male in Vietname',
-    total_inventory: 100,
-    subCategory: 1
+    inventory: 100,
+    subCategory: 1,
+    store:1
   })
-  // const testResult = await  Product.findOne({
-  //   id: 1
-  // }).populate('subCategory')
-  // sails.log(testResult)
-
+  
+  // 
 };
