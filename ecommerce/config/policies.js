@@ -29,5 +29,5 @@ module.exports.policies = {
   'v1/auth/verify': true,
   // '*': true
   'v1/store/*': ['isLoggedIn','isSeller'],
-  // 'v1/store/get-store-info': ['isLoggedIn','isSeller']
+  'v1/buyer/*': ['isLoggedIn','isBuyer']
 };
