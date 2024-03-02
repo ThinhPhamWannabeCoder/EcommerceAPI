@@ -118,6 +118,20 @@ module.exports.bootstrap = async function() {
     subCategory: 1,
     store:1
   })
+  await Product.create({
+    name: 'Supreme hoodie',
+    desc: 'Supreme hoodie for male in Vietname',
+    inventory: 500,
+    subCategory: 2,
+    store:1
+  })
+  await Product.create({
+    name: 'Mono T-Shirt',
+    desc: 'Mono T-shirt for male in Vietname',
+    inventory: 400,
+    subCategory: 3,
+    store:1
+  })
   
   // 
 };

@@ -6,22 +6,30 @@
  */
 
 module.exports = {
-  tableName: 'userLocation',
+  tableName: 'userDeliveryContacts',
   attributes: {
-
-    location:{
-      type: 'string',
-      required: true,
-    },
     user:{
       columnName: 'user_id',
-      model: 'users'
+      model: 'users',
+      required: true
     },
     ward:{
       columnName: 'ward_id',
       model: 'ward',
+      required: true
+    },
+    location:{
+      type: 'string',
+      required: true,
+    },
+    contactNumer:{
+      type: 'string',
+      required: true
+    },
+    orders:{
+      collection: 'orders',
+      via: 'contact'
     }
-
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

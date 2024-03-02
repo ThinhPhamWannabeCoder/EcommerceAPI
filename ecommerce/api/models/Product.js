@@ -5,6 +5,7 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
+
 module.exports = {
 
   attributes: {
@@ -23,10 +24,10 @@ module.exports = {
     inventory:{
       type: 'number',
     },
-    store:{
-      columnName: 'store_id',
-      model: 'store'
-    },
+    // store:{
+    //   columnName: 'store_id',
+    //   model: 'store'
+    // },
     subCategory:{
       columnName: 'subcategory_id',
       model: 'subProductCategory',
@@ -40,17 +41,27 @@ module.exports = {
     //   via: 'product',
     //   through: 'inventory'
     // }
+    buyersPutInCart:{
+      collection: 'users',
+      via: 'products',
+      through: 'cart'
+    },
+    ordersDetail:{
+      collection: 'orderDetail',
+      via: 'product',
+    }
 
 
 
   },
   beforeCreate: async function(values, proceed){
-    if(await ProductCategory.findOne({
+    if(await SubProductCategory.findOne({
       id: values.subCategory
     })){
       return proceed()
     }
-    return proceed(new Error("There's no subcateogry id"))
+    sails.log.error(values.subCategory)
+    return proceed(new Error("There's no subcategry id"))
   },
   beforeUpdate: async function(values, proceed){
     

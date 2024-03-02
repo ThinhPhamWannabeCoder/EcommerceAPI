@@ -21,9 +21,10 @@ module.exports = {
       collection: 'store',
       via: 'ward'
     },
-    userLocation:{
-      collection: 'userLocation',
-      via: 'ward'
+    UserDeliveryContact:{
+      collection: 'users',
+      via: 'ward',
+      through: 'userDeliveryContacts'
     }
 
   },

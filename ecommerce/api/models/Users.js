@@ -44,6 +44,10 @@ module.exports = {
       type: 'string',
       allowNull: true,
     },
+    phoneNumber:{
+      type: 'string',
+      allowNull: true,
+    },
     avatarUrl:{
       type: 'string',
       description: "Avatar URL will be stored here for FE to fetch",
@@ -54,13 +58,23 @@ module.exports = {
       via: 'users',
       // through: 'usersRoles'
     },
-    userLocation:{
-      collection: 'userLocation',
-      via: 'user'
+    UserDeliveryContact:{
+      collection: 'ward',
+      via: 'user',
+      through: 'userDeliveryContacts'
     },
     store:{
       collection: 'store',
       via: 'owner',
+    },
+    productsInCart:{
+      collection : 'product',
+      via: 'buyers',
+      through: 'cart'
+    },
+    orders:{
+      collection: 'orders',
+      via: 'buyer'
     },
     // Store
     emailProofToken:{
